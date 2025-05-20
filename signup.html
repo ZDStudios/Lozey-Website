@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6a0dad;
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            background-color: #5a0cab;
+            border-radius: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background-color: white;
+            color: black;
+        }
+        button {
+            background-color: #d4aaff;
+            color: black;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b38bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const username = formData.get("username");
+            const password = formData.get("password");
+
+            try {
+                const response = await fetch("https://zdstudios.github.io/Lozey-Website/Logins.txt");
+                const text = await response.text();
+                const logins = text.split("\n").map(line => line.split(" "));
+
+                // Check if username and password match an entry
+                const isValid = logins.some(([storedUsername, storedPassword]) => 
+                    storedUsername === username && storedPassword === password
+                );
+
+                const messageElement = document.getElementById("message");
+                if (isValid) {
+                    messageElement.textContent = "Login successful! 🎉";
+                    messageElement.style.color = "lightgreen";
+                } else {
+                    messageElement.textContent = "Invalid username or password. Please try again.";
+                    messageElement.style.color = "red";
+                }
+            } catch (error) {
+                alert("Error checking login list. Please try again later.");
+            }
+        });
+    </script>
+
+</body>
+</html>
