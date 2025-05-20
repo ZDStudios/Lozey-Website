@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lozey - Your AI Homework Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .glow {
+            box-shadow: 0 0 15px rgba(167, 119, 227, 0.5);
+        }
+        
+        /* Dark mode styles */
+        .dark .dark\:bg-gray-900 {
+            background-color: #111827;
+        }
+        .dark .dark\:bg-gray-800 {
+            background-color: #1f2937;
+        }
+        .dark .dark\:text-white {
+            color: #ffffff;
+        }
+        .dark .dark\:text-gray-300 {
+            color: #d1d5db;
+        }
+        .dark .dark\:bg-gray-700 {
+            background-color: #374151;
+        }
+        .dark .dark\:border-gray-700 {
+            border-color: #374151;
+        }
+        
+        /* Toggle switch styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #a777e3;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #a777e3;
+        }
+
+        /* Pricing card hover effect */
+        .pricing-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Login iframe container */
+        .login-container {
+            min-height: 500px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-robot text-3xl mr-3"></i>
+                    <span class="font-bold text-2xl">Lozey</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="hover:text-gray-200 transition">Features</a>
+                    <a href="#how-it-works" class="hover:text-gray-200 transition">How It Works</a>
+                    <a href="#pricing" class="hover:text-gray-200 transition">Pricing</a>
+                    <a href="#testimonials" class="hover:text-gray-200 transition">Testimonials</a>
+                    <a href="#login" class="hover:text-gray-200 transition">Login</a>
+                    <a href="https://github.com/ZDStudios" target="_blank" class="hover:text-gray-200 transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    
+                    <!-- Dark mode toggle -->
+                    <div class="flex items-center">
+                        <span class="mr-2 text-sm"><i class="fas fa-sun"></i></span>
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                            <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <span class="text-sm"><i class="fas fa-moon"></i></span>
+                    </div>
+                    
+                    <button class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+                        Get Started
+                    </button>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg hero-pattern text-white">
+        <div class="container mx-auto px-6 py-24 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Your AI Homework Assistant</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                Lozey solves your Education Perfect assignments instantly. More formats coming soon!
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105">
+                    Try It Free <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                <button class="border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105">
+                    Watch Demo <i class="fas fa-play-circle ml-2"></i>
+                </button>
+            </div>
+            <div class="mt-16 relative">
+                <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="AI solving homework" class="w-full h-auto">
+                    <div class="absolute -bottom-5 -right-5 bg-purple-500 text-white px-4 py-2 rounded-full font-bold text-sm">
+                        PDF & Word Support Coming Soon!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Why Choose Lozey?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Instant Solutions</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Get accurate answers to your Education Perfect assignments in seconds. No more struggling with difficult problems.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Learning Made Easy</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Lozey doesn't just give answers - it explains concepts so you actually understand the material.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Save Time</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Spend less time on homework and more time on what matters to you. Get your evenings back!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">How Lozey Works</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg glow">
+                        <div class="flex items-center mb-6">
+                            <div class="gradient-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                1
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Upload Your Assignment</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8">
+                            Simply take a picture or upload your Education Perfect assignment. Our AI will analyze it instantly.
+                        </p>
+                        
+                        <div class="flex items-center mb-6">
+                            <div class="gradient-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                2
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">AI Processes Your Work</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8">
+                            Our advanced algorithms understand the questions and generate accurate solutions with explanations.
+                        </p>
+                        
+                        <div class="flex items-center">
+                            <div class="gradient-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                3
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Receive Your Answers</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Get step-by-step solutions delivered to you in seconds. PDF and Word document support coming soon!
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="AI processing homework" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Simple, Transparent Pricing</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="pricing-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl border border-gray-200 dark:border-gray-600 transition duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Free</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Try before you buy</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-gray-800 dark:text-white">$0</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> 5 assignments per month
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Basic explanations
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times-circle text-red-400 mr-2"></i> No PDF/Word support
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times-circle text-red-400 mr-2"></i> Limited subjects
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white py-3 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-500 transition">
+                        Current Plan
+                    </button>
+                </div>
+                
+                <!-- Student Plan -->
+                <div class="pricing-card bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 p-8 rounded-xl border border-purple-200 dark:border-purple-700 transition duration-300 transform scale-105">
+                    <div class="text-center mb-6">
+                        <div class="inline-block bg-purple-500 text-white text-xs px-3 py-1 rounded-full mb-2">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Student</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Perfect for individual learners</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-gray-800 dark:text-white">$9.99</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> 50 assignments per month
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Detailed explanations
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> PDF/Word support
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times-circle text-red-400 mr-2"></i> Limited to 3 subjects
+                        </li>
+                    </ul>
+                    <button class="w-full gradient-bg text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                        Upgrade Now
+                    </button>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="pricing-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl border border-gray-200 dark:border-gray-600 transition duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Premium</h3>
+                        <p class="text-gray-600 dark:text-gray-300">For serious students</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-gray-800 dark:text-white">$19.99</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Unlimited assignments
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Premium explanations
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> All document formats
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> All subjects included
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white py-3 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-500 transition">
+                        Get Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">What Students Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold mr-4">JS</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Jamie S.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "Lozey saved me so much time on my math homework! The explanations actually helped me understand the concepts better."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mr-4">AM</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Alex M.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "I was struggling with chemistry until I found Lozey. Now I can complete my assignments faster and actually learn from them."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold mr-4">TP</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Taylor P.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "The best $10 I spend each month! Lozey has helped me maintain my 4.0 GPA while still having time for extracurriculars."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="py-20 gradient-bg hero-pattern text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Login to Your Account</h2>
+            
+            <div class="max-w-2xl mx-auto login-container">
+                <iframe src="https://zdstudios.github.io/Lozey-Login/" frameborder="0" class="w-full h-[500px]"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-3xl mr-3"></i>
+                        <span class="font-bold text-2xl">Lozey</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Your AI-powered homework assistant, making learning easier and faster.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://github.com/ZDStudios" target="_blank" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Updates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Lozey by ZDStudios. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark mode toggle script -->
+    <script>
+        // Check for saved 'darkMode' in localStorage
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+            document.getElementById('toggle').checked = true;
+        }
+
+        // Toggle dark mode
+        document.getElementById('toggle').addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Mobile menu toggle (if needed)
+        document.querySelector('.md\\:hidden').addEventListener('click', function() {
+            // Add mobile menu functionality here if needed
+            console.log('Mobile menu clicked');
+        });
+    </script>
+</body>
+</html>
