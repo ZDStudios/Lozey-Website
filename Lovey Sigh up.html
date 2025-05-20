@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6a0dad;
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            background-color: #5a0cab;
+            border-radius: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background-color: white;
+            color: black;
+        }
+        button {
+            background-color: #d4aaff;
+            color: black;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b38bff;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #4a0082;
+            border-radius: 10px;
+        }
+        .instructions h3 {
+            color: #d4aaff;
+        }
+        .instructions ol {
+            text-align: left;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number (Optional)">
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="instructions">
+            <h3>How to Sign Up:</h3>
+            <ol>
+                <li>Enter your information in the fields above.</li>
+                <li>Click the "Sign Up" button.</li>
+                <li>Your email app will open automatically.</li>
+                <li>Once your email is open, simply click "Send".</li>
+                <li>You're all set! 🎉</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            let emailBody = "New Signup:\n";
+            for (let [key, value] of formData.entries()) {
+                emailBody += `${key}: ${value}\n`;
+            }
+
+            window.location.href = `mailto:zdstudio12345@gmail.com?subject=New Signup&body=${encodeURIComponent(emailBody)}`;
+        });
+    </script>
+
+</body>
+</html>
