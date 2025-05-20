@@ -38,49 +38,23 @@
         button:hover {
             background-color: #b38bff;
         }
-        .instructions {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #4a0082;
-            border-radius: 10px;
-        }
-        .instructions h3 {
-            color: #d4aaff;
-        }
-        .instructions ol {
-            text-align: left;
-            padding-left: 20px;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Sign Up</h2>
-        <form id="signupForm">
+        <h2>Login</h2>
+        <form id="loginForm">
             <input type="text" name="username" placeholder="Username" required>
-            <input type="text" name="first_name" placeholder="First Name" required>
-            <input type="text" name="last_name" placeholder="Last Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel" name="phone" placeholder="Phone Number (Optional)">
             <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
+            <button type="submit">Login</button>
         </form>
-
-        <div class="instructions">
-            <h3>How to Sign Up:</h3>
-            <ol>
-                <li>Enter your information in the fields above.</li>
-                <li>Click the "Sign Up" button.</li>
-                <li>Your email app will open automatically.</li>
-                <li>Once your email is open, simply click "Send".</li>
-                <li>You're all set! 🎉</li>
-            </ol>
-        </div>
+        <button onclick="redirectToSignUp()">Sign Up</button>
+        <p id="message"></p>
     </div>
 
     <script>
-        document.getElementById("signupForm").addEventListener("submit", async function(event) {
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
             const formData = new FormData(this);
@@ -92,27 +66,27 @@
                 const text = await response.text();
                 const logins = text.split("\n").map(line => line.split(" "));
 
-                // Check if username or password already exists
-                const isDuplicate = logins.some(([storedUsername, storedPassword]) => 
-                    storedUsername === username || storedPassword === password
+                // Check if username and password match an entry
+                const isValid = logins.some(([storedUsername, storedPassword]) => 
+                    storedUsername === username && storedPassword === password
                 );
 
-                if (isDuplicate) {
-                    alert("Username or password already exists. Please choose a different one.");
-                    return;
+                const messageElement = document.getElementById("message");
+                if (isValid) {
+                    messageElement.textContent = "Login successful! 🎉";
+                    messageElement.style.color = "lightgreen";
+                } else {
+                    messageElement.textContent = "Invalid username or password. Please try again.";
+                    messageElement.style.color = "red";
                 }
-
-                // Proceed with sending email
-                let emailBody = "New Signup:\n";
-                for (let [key, value] of formData.entries()) {
-                    emailBody += `${key}: ${value}\n`;
-                }
-
-                window.location.href = `mailto:zdstudio12345@gmail.com?subject=New Signup&body=${encodeURIComponent(emailBody)}`;
             } catch (error) {
                 alert("Error checking login list. Please try again later.");
             }
         });
+
+        function redirectToSignUp() {
+            window.location.href = "signup.html"; // Replace with the actual sign-up page URL
+        }
     </script>
 
 </body>
